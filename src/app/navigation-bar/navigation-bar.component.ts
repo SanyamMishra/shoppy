@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
+import { Observable } from 'rxjs';
+import { User } from '../user';
 
 @Component({
   selector: 'app-navigation-bar',
   templateUrl: './navigation-bar.component.html',
   styleUrls: ['./navigation-bar.component.css']
 })
-export class NavigationBarComponent implements OnInit {
+export class NavigationBarComponent {
+  public appUser$: Observable<User>;
 
-  constructor() { }
+  constructor(public authService: AuthService, public userService: UserService, private router: Router) {
+    this.appUser$ = this.userService.get$(this.authService.firebaseAuthUser$);
+  }
 
-  ngOnInit() {
+  logout() {
+    this.authService.logout()
+      .then(() => this.router.navigate(['/']));
   }
 
 }

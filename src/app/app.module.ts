@@ -14,9 +14,23 @@ import { AppComponent } from './app.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { HomeComponent } from './home/home.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { CheckOutComponent } from './check-out/check-out.component';
+import { LoginComponent } from './login/login.component';
+import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
+
+import { AuthGuard } from './guards/auth.guard';
+import { GuestGuard } from './guards/guest.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 const appRoutes: Routes = [
+  {path: 'login', component: LoginComponent, canActivate: [GuestGuard]},
+
+  {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
+
+  {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminGuard]},
+
   {path: 'shopping-cart', component: ShoppingCartComponent},
+
   {path: '', component: HomeComponent}
 ];
 
@@ -25,13 +39,16 @@ const appRoutes: Routes = [
     AppComponent,
     NavigationBarComponent,
     ShoppingCartComponent,
-    HomeComponent
+    HomeComponent,
+    CheckOutComponent,
+    LoginComponent,
+    AdminOrdersComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialComponentsModule,
-    RouterModule.forRoot(appRoutes, { enableTracing: true}),
+    RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule
