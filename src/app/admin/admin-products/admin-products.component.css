@@ -1,0 +1,30 @@
+.table-container {
+  padding: 20px 20px 0 20px;
+  width: 80%;
+  margin: 20px auto;
+}
+
+table {
+  width: 100%;
+}
+
+
+.header {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+}
+
+.header .mat-typography {
+  margin: 0 26px 0 10px;
+}
+
+mat-form-field {
+  font-size: 14px;
+  flex-grow: 1;
+  margin-bottom: 10px;
+}
+
+.mat-column-index, .mat-column-action {
+  width: 100px;
+}

@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.rsNigga {
+  font-size: 150%;
+}
+
+form {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.inr-symbol {
+  padding: 0 5px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.required-field-indicator {
+  display: inline-block;
+  text-align: right;
+  width: 100%;
+  font-style: italic;
+  color: rgba(0,0,0,0.54);
+}
+
+button {
+  margin-top: 10px;
+}
+
+mat-card {
+  min-width: 300px;
+  max-width: 300px;
+}
+
+button {
+  margin-right: 10px;
+}
