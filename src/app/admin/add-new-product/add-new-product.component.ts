@@ -1,8 +1,7 @@
 import { Component, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Subscription, combineLatest } from 'rxjs';
-import { NgForm } from '@angular/forms';
-import { Product, ProductCategory } from 'src/app/product';
+import { Product } from 'src/app/product';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -20,7 +19,7 @@ export class AddNewProductComponent implements OnDestroy {
     imageURL: null
   };
   id: string;
-  productCategories: ProductCategory[];
+  productCategories: {name: string, id: string}[];
   combinedSubscription: Subscription;
 
   constructor(public productService: ProductService, private router: Router, private route: ActivatedRoute) {
@@ -40,6 +39,14 @@ export class AddNewProductComponent implements OnDestroy {
 
   ngOnDestroy() {
     this.combinedSubscription.unsubscribe();
+  }
+
+  getCategory(id) {
+    if (!this.productCategories) return null;
+
+    const category = this.productCategories.find(cat => cat.id === id);
+    if (category) return category.name;
+    else return null;
   }
 
   addProduct(product: Product) {

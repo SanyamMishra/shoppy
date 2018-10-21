@@ -27,6 +27,7 @@ import { AddNewProductComponent } from './admin/add-new-product/add-new-product.
 import { AuthGuard } from './guards/auth.guard';
 import { GuestGuard } from './guards/guest.guard';
 import { AdminGuard } from './guards/admin.guard';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent, canActivate: [GuestGuard]},
@@ -54,7 +55,8 @@ const appRoutes: Routes = [
     AdminOrdersComponent,
     AdminProductsComponent,
     TableFilterDirective,
-    AddNewProductComponent
+    AddNewProductComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,

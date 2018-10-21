@@ -1,0 +1,29 @@
+mat-sidenav-container {
+  width: 100%;
+  min-height: calc(100vh - 64px);
+}
+
+mat-sidenav {
+  padding: 12px 24px 12px 12px;
+  position: fixed;
+  left: 0;
+  top: 64px;
+}
+
+mat-sidenav-content {
+  padding: 10px;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+app-product-card {
+  margin: 10px;
+}
+
+button {
+  display: block;
+  text-align: left;
+}

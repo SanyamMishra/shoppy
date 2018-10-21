@@ -1,12 +1,10 @@
 <div class="container mat-elevation-z2">
-  <mat-card class="mat-elevation-z2">
-    <img mat-card-image [src]="imageURL.value || 'https://www.adobeexchange.com/content/dam/adobeexchange/no_preview.jpg'">
-    <mat-card-header>
-      <mat-card-title>{{ title.value || 'Product Title' }}</mat-card-title>
-      <mat-card-subtitle>{{ category.value?.name || 'Category' }}</mat-card-subtitle>
-      <mat-card-title class="rsNigga">{{ price.value || 0 | currency:'INR' }}</mat-card-title>
-    </mat-card-header>
-  </mat-card>
+  <app-product-card
+    [title]="title.value"
+    [category]="getCategory(category.value)"
+    [price]="price.value"
+    [imageURL]="imageURL.value">
+  </app-product-card>
 
   <form #form="ngForm" (ngSubmit)="addProduct(form.value)">
     <span class="mat-typography required-field-indicator">*required</span>

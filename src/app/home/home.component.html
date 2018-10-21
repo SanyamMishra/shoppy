@@ -1,3 +1,20 @@
-<p>
-  home works!
-</p>
+<mat-sidenav-container class="example-container" autosize>
+  <mat-sidenav mode="side" opened>
+    <button type="button" mat-button [color]="currCategory ? null : 'primary'" routerLink="/">All Categories</button>
+    <ng-container *ngFor="let category of productCategories">
+      <button type="button" mat-button [color]="currCategory === category.id ? 'primary' : null" routerLink="/" [queryParams]="{category: category.id}">{{ category.name }}</button>
+    </ng-container>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="grid">
+      <app-product-card 
+        *ngFor="let product of products"
+        [title]="product.title"
+        [category]="getCategoryName(product.category)"
+        [price]="product.price"
+        [imageURL]="product.imageURL"
+        addToCart="true">
+      </app-product-card>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

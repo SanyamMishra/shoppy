@@ -1,0 +1,15 @@
+<div class="card mat-elevation-z4">
+  <div class="image" [style.background-image]="imageURL ? 'url('+ imageURL +')' : 'url(https://www.adobeexchange.com/content/dam/adobeexchange/no_preview.jpg)'"></div>
+  <div class="data">
+    <div class="text-data mat-typography">
+      <div class="title">{{ title || 'Product Title' }}</div>
+      <div class="category">{{ category || 'Category' }}</div>
+      <div class="price">{{ price || 0 | currency:'INR' }}</div>
+    </div>
+    <div class="order-data" *ngIf="addToCart">
+      <!-- <button type="button" mat-raised-button color="primary">Add to cart</button> -->
+      <button type="button" mat-button color="primary">Add to cart</button>
+      <!-- <button type="button" mat-stroked-button color="primary">Add to cart</button> -->
+    </div>
+  </div>
+</div>
