@@ -22,4 +22,12 @@ export class NavigationBarComponent {
       .then(() => this.router.navigate(['/']));
   }
 
+  disableAdminAccess() {
+    this.userService.disableAdminAccess(this.authService.firebaseAuthUser$);
+  }
+
+  enableAdminAccess() {
+    this.userService.enableAdminAccess(this.authService.firebaseAuthUser$);
+  }
+
 }

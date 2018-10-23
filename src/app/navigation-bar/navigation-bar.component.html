@@ -1,6 +1,6 @@
 <mat-toolbar color="primary" class="mat-elevation-z6">
   <mat-toolbar-row>
-    <button mat-stroked-button routerLink="" class="logo-button">Shoppy</button>
+    <button mat-stroked-button routerLink="" class="logo-button" matTooltip="Home">Shoppy</button>
     
     <span class="spacer"></span>
     
@@ -11,12 +11,16 @@
       <mat-menu #menu="matMenu">
         <button mat-menu-item>My Orders</button>
         <ng-container *ngIf="appUser$ | async as appUser">
-          <ng-container *ngIf="appUser?.isAdmin">
+          <ng-container *ngIf="appUser?.isAdmin; else enableAdminAccessButton">
             <button mat-menu-item routerLink="/admin/orders">Manage Orders</button>
             <button mat-menu-item routerLink="/admin/products">Manage Products</button>
+            <button mat-menu-item (click)="disableAdminAccess()">Disable Admin Access</button>
           </ng-container>
         </ng-container>
         <button mat-menu-item (click)="logout()">Log Out</button>
+        <ng-template #enableAdminAccessButton>
+          <button mat-menu-item (click)="enableAdminAccess()">Enable Admin Access</button>
+        </ng-template>
       </mat-menu>
     </ng-container>
 

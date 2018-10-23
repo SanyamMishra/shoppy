@@ -39,4 +39,14 @@ export class UserService {
       })
     );
   }
+
+  disableAdminAccess(firebaseAuthUser$: Observable<firebase.User>) {
+    firebaseAuthUser$
+      .subscribe(user => this.afs.collection<User>('users').doc(user.uid).update({isAdmin: false}));
+  }
+
+  enableAdminAccess(firebaseAuthUser$: Observable<firebase.User>) {
+    firebaseAuthUser$
+      .subscribe(user => this.afs.collection<User>('users').doc(user.uid).update({ isAdmin: true }));
+  }
 }
